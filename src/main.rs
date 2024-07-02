@@ -1,12 +1,19 @@
-use def::Deck;
+use def::Shoe;
 use print::print_card;
+use std::io;
 
 mod def;
 mod print;
 fn main() {
-    let deck = Deck::new();
+    let mut shoe = Shoe::new(1);
 
-    for card in deck.cards {
-        print_card(card);
+    loop {
+    let mut player_input = String::new();
+    io::stdin().read_line(&mut player_input).unwrap();
+    let player_input_clean: String = player_input.trim().parse().unwrap();
+    
+    if player_input_clean == "hit".to_string() {
+        print_card(shoe.hit());
     }
+}
 }
