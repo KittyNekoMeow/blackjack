@@ -9,3 +9,9 @@ pub fn print_card(card: Card) {
         _ => ()
     }
 }
+
+pub fn print_cards(cards: &Vec<Card>) {
+    for card in cards {
+        print_card(*card);
+    }
+}

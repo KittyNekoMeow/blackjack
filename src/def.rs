@@ -1,3 +1,5 @@
+use std::io;
+
 /// Defines the cards of the cards.
 #[derive(Debug, Clone, Copy)]
 pub struct Card {
@@ -283,4 +285,11 @@ fn shuffle(mut deck: [Card; 52]) -> [Card; 52] {
     }
 
     return deck;
+}
+
+pub fn get_input() -> String {
+    let mut player_input = String::new().to_lowercase();
+    io::stdin().read_line(&mut player_input).unwrap();
+    let player_input_clean: String = player_input.trim().parse().unwrap();
+    return player_input_clean;
 }
