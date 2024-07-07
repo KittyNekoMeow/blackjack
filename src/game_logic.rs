@@ -1,4 +1,4 @@
-use crate::{def::{get_input, Card}, gamestate::Gamestate, print::print_cards};
+use crate::{def::{get_input, Card}, gamestate::Gamestate, print::{print_card, print_cards}};
 
 fn get_point(card: Card) -> i8 {
     match card.num {
@@ -53,8 +53,9 @@ pub fn play_game() {
     player_cards.push(gamestate.shoe.hit());
     player_cards.push(gamestate.shoe.hit());
     // Print their cards.
-    // TODO! make it so that the second card of the dealer is invisible
-    print_cards(&dealer_cards);
+    println!("Dealers cards.");
+    print_card(dealer_cards[0]);
+    println!("Your cards.");
     print_cards(&player_cards);
     loop {
         // If you hit blackjack you win.
@@ -107,6 +108,7 @@ pub fn play_game() {
             println!("You lose.");
             break;
         }
+        println!("Dealer hits");
         // The dealer grabs a new card and it gets printed.
         dealer_cards.push(gamestate.shoe.hit());
         print_cards(&dealer_cards);
